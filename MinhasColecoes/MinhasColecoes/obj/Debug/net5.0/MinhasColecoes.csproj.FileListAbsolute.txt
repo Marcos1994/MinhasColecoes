@@ -116,7 +116,6 @@ F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\System.Net.Http.Formatting.dll
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Index.cshtml.g.cs
-F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\GetById.cshtml.g.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Antiforgery.dll
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
@@ -406,3 +405,4 @@ F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\Micros
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\MinhasColecoes.MvcApplicationPartsAssemblyInfo.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\MinhasColecoes.csproj.AssemblyReference.cache
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Cadastrar.cshtml.g.cs
+F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Visualizar.cshtml.g.cs

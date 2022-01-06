@@ -38,7 +38,7 @@ namespace MinhasColecoes.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetById(int id)
+		public async Task<IActionResult> Visualizar(int id)
 		{
 			HttpClient client = new HelperAPI().Client;
 			HttpResponseMessage response = await client.GetAsync($"Colecoes/{id}");
@@ -48,8 +48,15 @@ namespace MinhasColecoes.Controllers
 			return View(colecao);
 		}
 
+		public async Task<IActionResult> Cadastrar(string nome)
+		{
+			return View(new ColecaoInputModel() { Nome = nome });
+		}
+
+		[HttpPost]
 		public async Task<IActionResult> Cadastrar(ColecaoInputModel input)
 		{
+			input.Nome = "AEEEEE";
 			return View(input);
 		}
 	}
