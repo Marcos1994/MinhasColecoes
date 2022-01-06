@@ -44,6 +44,7 @@ namespace MinhasColecoes.Controllers
 		public async Task<IActionResult> Visualizar(int id)
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			ViewBag.IdUsuario = HttpContext.Session.GetString("usrId");
 			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			HttpResponseMessage response = await client.GetAsync($"Colecoes/{id}");
 

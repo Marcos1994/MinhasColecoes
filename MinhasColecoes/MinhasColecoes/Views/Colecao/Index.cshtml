@@ -52,9 +52,11 @@
 	{
 		<div class="col">
 			<div class="card h-100">
-				<a href="#" class="position-absolute end-0 p-2 text-secondary">
-					<i class="bi-flag-fill" style="font-size: 20px; line-height: 20px;"></i>
-				</a>
+				@if (!c.Publica)
+				{
+					<i class="bi-eye-slash-fill position-absolute end-0 p-2 text-secondary" title="Coleção particular"
+						style="font-size: 20px; line-height: 20px;"></i>
+				}
 				<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)">
 					<img src="~/img/colecao/foto-padrao.png" class="card-img-top" alt="...">
 				</a>

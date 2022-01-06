@@ -16,9 +16,12 @@
 		</div>
 	</div>
 	<div class="col-2 col-sm-1">
-		<div class="d-flex flex-row-reverse justify-content-center justify-content-sm-start">
-			<input class="btn btn-sm btn-secondary" type="button" value="Editar" />
-		</div>
+		@if (Model.Dono.Id.ToString() == ViewBag.IdUsuario)
+		{
+			<div class="d-flex flex-row-reverse justify-content-center justify-content-sm-start">
+				<input class="btn btn-sm btn-secondary" type="button" value="Editar" />
+			</div>
+		}
 	</div>
 </div>
 
@@ -36,9 +39,11 @@
 			{
 				<div class="col">
 					<div class="card h-100">
-						<a href="#" class="position-absolute end-0 p-2 text-secondary">
-							<i class="bi-flag-fill" style="font-size: 20px; line-height: 20px;"></i>
-						</a>
+						@if (!c.Publica)
+						{
+							<i class="bi-eye-slash-fill position-absolute end-0 p-2 text-secondary" title="Coleção particular"
+							   style="font-size: 20px; line-height: 20px;"></i>
+						}
 						<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)">
 							<img src="~/img/colecao/foto-padrao.png" class="card-img-top" alt="...">
 						</a>
@@ -52,9 +57,7 @@
 		</div>
 	</div>
 	@if (Model.Itens.Count > 0)
-	{
-		<hr />
-}
+	{ <hr /> }
 }
 
 @if (Model.Itens.Count > 0)
@@ -117,8 +120,3 @@
 		</div>
 	</div>
 }
-
-@*<div>
-		@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-		<a asp-action="Index">Back to List</a>
-	</div>*@
