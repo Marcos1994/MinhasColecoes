@@ -27,47 +27,8 @@ namespace MinhasColecoes.Controllers
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
 			if (ViewBag.Usuario != null)
-				return Redirect("../Usuario/Index");
+				return Redirect("../Usuario");
 			return View();
-		}
-
-		[HttpGet]
-		public IActionResult Login()
-		{
-			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
-			if (ViewBag.Usuario != null)
-				return Redirect("../Usuario/Index");
-			return View();
-		}
-
-		[HttpPost]
-		public async Task<IActionResult> Login(UsuarioLoginInputModel usuarioLogin)
-		{
-			if(!ModelState.IsValid)
-				return View(usuarioLogin);
-
-			HttpClient client = new HelperAPI().Client;
-			HttpResponseMessage response = await client.PostAsJsonAsync($"/Usuario/Login", usuarioLogin);
-			if(response.IsSuccessStatusCode)
-			{
-				UsuarioLoginViewModel usuarioLogado = await response.Content.ReadAsAsync<UsuarioLoginViewModel>();
-
-				HttpContext.Session.SetString("usrId", usuarioLogado.Id.ToString());
-				HttpContext.Session.SetString("usrNome", usuarioLogado.Nome);
-				HttpContext.Session.SetString("usrToken", usuarioLogado.Token);
-				ViewBag.Usuario = usuarioLogado.Nome;
-
-				return Redirect("../Usuario/Index");
-			}
-			else
-			{
-				return View("Error");
-			}
-		}
-		public IActionResult Logout()
-		{
-			HttpContext.Session.Clear();
-			return View("Index");
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
