@@ -1,0 +1,55 @@
+﻿@model MinhasColecoes.Models.API.ColecaoInputModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-primary">Cadastrar Coleção</h1>
+<hr />
+<div class="row">
+	<div class="col-sm-6 col-lg-4">
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<form asp-action="Cadastrar">
+			<div class="form-floating mb-3">
+				<input asp-for="Nome" class="form-control" />
+				<label asp-for="Nome" class="control-label"></label>
+				<span asp-validation-for="Nome" class="text-danger"></span>
+			</div>
+
+			<div class="form-group form-check mb-3">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="Publica" /> @Html.DisplayNameFor(model => model.Publica)
+				</label>
+			</div>
+
+			<div class="form-floating mb-3">
+				<input asp-for="Descricao" class="form-control" />
+				<label asp-for="Descricao" class="control-label"></label>
+				<span asp-validation-for="Descricao" class="text-danger"></span>
+			</div>
+
+			<div class="input-group mb-3">
+				<button class="btn btn-primary" type="button" disabled="disabled">
+					<i class="bi-search" title="Não Possuo" style="font-size: 20px; line-height: 20px;"></i>
+				</button>
+				<input asp-for="Foto" type="text" class="form-control form-control-sm" placeholder="Foto" aria-label="Foto" aria-describedby="Foto">
+				<span asp-validation-for="Foto" class="text-danger"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-10 col-sm-11">
+					<div class="d-flex">
+						<button type="submit" class="btn btn-primary">Salvar Coleção</button>
+					</div>
+				</div>
+				<div class="col-2 col-sm-1">
+					<div class="d-flex flex-row-reverse justify-content-start">
+						<a asp-action="Index" class="btn btn-danger">Voltar</a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+

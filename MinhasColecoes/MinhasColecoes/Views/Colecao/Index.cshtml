@@ -1,0 +1,93 @@
+﻿@{
+	ViewData["Title"] = "Coleções";
+	@using MinhasColecoes.Models.API;
+}
+@model IEnumerable<ColecaoBasicViewModel>
+<div class="row">
+	<div class="col-12 col-md-6 col-lg-5 col-xl-4 mb-2 mb-md-0">
+		<div class="d-flex">
+			<form method="GET" class="input-group mb-3">
+				<button class="btn btn-primary" type="submit" id="button-busca">Buscar</button>
+				<input type="text" class="form-control form-control-sm" placeholder="Nome da coleção" aria-label="Nome da coleção" aria-describedby="button-busca" name="nome">
+				<button class="btn btn-outline-secondary btn-sm" type="submit" asp-area="" asp-controller="Colecao" asp-action="Cadastrar">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+	<div class="col-12 col-md-6 col-lg-7 col-xl-8 mb-3 mb-md-0">
+		<div class="d-flex flex-row-reverse justify-content-center justify-content-lg-start">
+			<form class="d-inline-block">
+				<select class="form-select form-select-sm">
+					<option>25 por página</option>
+					<option>50 por página</option>
+					<option>100 por página</option>
+					<option>200 por página</option>
+				</select>
+			</form>
+			<nav class="d-inline-block me-3">
+				<ul class="pagination pagination-sm">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
+	@foreach (ColecaoBasicViewModel c in Model)
+	{
+		<div class="col">
+			<div class="card h-100">
+				<a href="#" class="position-absolute end-0 p-2 text-secondary">
+					<i class="bi-flag-fill" style="font-size: 20px; line-height: 20px;"></i>
+				</a>
+				<a asp-area="" asp-controller="Colecao" asp-action="GetById" asp-route-id="@(c.Id)">
+					<img src="~/img/colecao/foto-padrao.png" class="card-img-top" alt="...">
+				</a>
+				<div class="card-body">
+					<h6 class="card-title truncate-2l text-center">@(c.Nome)</h6>
+					<p class="card-text truncate-2l">@(c.Descricao)</p>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
+<div class="row mt-3">
+	<div class="col-12 d-flex flex-row-reverse justify-content-center">
+		<nav class="d-inline-block">
+			<ul class="pagination">
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>

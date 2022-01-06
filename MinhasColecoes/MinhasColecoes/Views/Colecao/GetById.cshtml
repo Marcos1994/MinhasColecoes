@@ -1,0 +1,124 @@
+﻿@model ColecaoViewModel
+
+@{
+	ViewData["Title"] = Model.Nome;
+	@using MinhasColecoes.Models.API;
+	@using MinhasColecoes.Models.API.Enums;
+}
+
+<div class="row">
+	<div class="col-10 col-sm-11">
+		<div class="d-flex">
+			<div class="row">
+				<h1 class="text-primary">Coleção de @Html.DisplayFor(model => model.Nome)</h1>
+				<p>@Html.DisplayFor(model => model.Descricao)</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-2 col-sm-1">
+		<div class="d-flex flex-row-reverse justify-content-center justify-content-sm-start">
+			<input class="btn btn-sm btn-secondary" type="button" value="Editar" />
+		</div>
+	</div>
+</div>
+
+<hr />
+@if (Model.Colecoes.Count > 0)
+{
+	<p>
+		<button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSubcolecoes" aria-expanded="false" aria-controls="collapseSubcolecoes">
+			@(Model.Colecoes.Count) Subcoleções
+		</button>
+	</p>
+	<div class="collapse" id="collapseSubcolecoes">
+		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
+			@foreach (ColecaoBasicViewModel c in Model.Colecoes)
+			{
+				<div class="col">
+					<div class="card h-100">
+						<a href="#" class="position-absolute end-0 p-2 text-secondary">
+							<i class="bi-flag-fill" style="font-size: 20px; line-height: 20px;"></i>
+						</a>
+						<a asp-area="" asp-controller="Colecao" asp-action="GetById" asp-route-id="@(c.Id)">
+							<img src="~/img/colecao/foto-padrao.png" class="card-img-top" alt="...">
+						</a>
+						<div class="card-body">
+							<h6 class="card-title truncate-2l text-center">@(c.Nome)</h6>
+							<p class="card-text truncate-3l">@(c.Descricao)</p>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+	@if (Model.Itens.Count > 0)
+	{
+		<hr />
+}
+}
+
+@if (Model.Itens.Count > 0)
+{
+	<p>
+		<button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseItens" aria-expanded="false" aria-controls="collapseItens">
+			@(Model.Itens.Count) Itens
+		</button>
+	</p>
+	<div class="collapse" id="collapseItens">
+		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
+			@foreach (ItemBasicViewModel i in Model.Itens)
+			{
+				<div class="col">
+					<div class="card h-100">
+						<a href="#" class="position-absolute end-0 p-2 text-secondary">
+							@switch (i.Relacao)
+							{
+								case EnumRelacaoUsuarioItem.NaoPossuo:
+									<i class="bi-circle" title="Não Possuo"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Desejo:
+									<i class="bi-heart" title="Desejo"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.AguardandoRecebimento:
+									<i class="bi-heart-half" title="Aguardando Receber"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Possuo:
+									<i class="bi-heart-fill" title="Possuo"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Trocar:
+									<i class="bi-arrow-left-right" title="Tenho Para Trocar"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Vender:
+									<i class="bi-currency-dollar" title="Tenho Para Vender"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+							}
+						</a>
+						<a asp-area="" asp-controller="Item" asp-action="GetById" asp-route-id="@(i.Id)">
+							<img src="~/img/colecao/foto-padrao.png" class="card-img-top" alt="...">
+						</a>
+						<div class="card-body">
+							<h6 class="card-text truncate-2l text-center">@(i.Nome)</h6>
+						</div>
+						@if (i.Comentario != null && i.Comentario.Length > 0)
+						{
+							<div class="card-footer">
+								@(i.Comentario)
+							</div>
+						}
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+}
+
+@*<div>
+		@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+		<a asp-action="Index">Back to List</a>
+	</div>*@

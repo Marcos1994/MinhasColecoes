@@ -1,0 +1,28 @@
+﻿@{
+	ViewData["Title"] = "Login";
+}
+@model MinhasColecoes.Models.API.UsuarioLoginInputModel
+
+<div class="login-form">
+	<h1 class="title-gradient">Login</h1>
+	<div class="container">
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<form method="POST">
+			<div class="form-floating mb-3">
+				<input class="form-control" aria-describedby="emailHelp" asp-for="Login" autofocus />
+				<label asp-for="Login">E-mail: </label>
+			</div>
+			<div class="form-floating mb-3">
+				<input class="form-control" asp-for="Senha" type="password" />
+				<label asp-for="Senha">Senha: </label>
+			</div>
+			<div class="form-check mb-3">
+				<input type="checkbox" class="form-check-input" value="" id="chkLembrar" />
+				<label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
+			</div>
+			<div class="text-center">
+				<input class="btn btn-lg btn-primary" type="submit" value="Confirmar" />
+			</div>
+		</form>
+	</div>
+</div>
