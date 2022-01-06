@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MinhasColecoes.Helper;
 using MinhasColecoes.Models.API;
 using Newtonsoft.Json;
@@ -15,7 +16,8 @@ namespace MinhasColecoes.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Index(string nome = "")
 		{
-			HttpClient client = new HelperAPI().Client;
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			IEnumerable<ColecaoBasicViewModel> colecoes = null;
 
 			HttpResponseMessage response = await client
@@ -40,22 +42,29 @@ namespace MinhasColecoes.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Visualizar(int id)
 		{
-			HttpClient client = new HelperAPI().Client;
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			HttpResponseMessage response = await client.GetAsync($"Colecoes/{id}");
-			ColecaoViewModel colecao = (response.IsSuccessStatusCode)
-				? await response.Content.ReadAsAsync<ColecaoViewModel>()
-				: new ColecaoViewModel();
-			return View(colecao);
+
+			if (response.IsSuccessStatusCode)
+			{
+				ColecaoViewModel colecao = await response.Content.ReadAsAsync<ColecaoViewModel>();
+				return View(colecao);
+			}
+			else
+				return View("Error");
 		}
 
 		public async Task<IActionResult> Cadastrar(string nome)
 		{
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
 			return View(new ColecaoInputModel() { Nome = nome });
 		}
 
 		[HttpPost]
 		public async Task<IActionResult> Cadastrar(ColecaoInputModel input)
 		{
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
 			input.Nome = "AEEEEE";
 			return View(input);
 		}

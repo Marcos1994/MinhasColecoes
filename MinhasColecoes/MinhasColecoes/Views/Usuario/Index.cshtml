@@ -1,6 +1,6 @@
 ﻿@{
 	ViewData["Title"] = "Meu Perfil";
 }
-@model MinhasColecoes.Models.API.UsuarioLoginInputModel
-<h1>Pagina do usuario</h1>
-
+@model MinhasColecoes.Models.API.UsuarioViewModel
+<h1>@Model.Nome</h1>
+<a class="btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Logout">Sair</a>

@@ -12,16 +12,13 @@ namespace MinhasColecoes.Helper
 		private readonly string url = "https://localhost:44308";
 		public HttpClient Client { get; private set; }
 
-		public HelperAPI()
+		public HelperAPI(string? token = null)
 		{
 			Client = new HttpClient();
 			Client.BaseAddress = new Uri(url);
-		}
-		public HelperAPI(string token)
-			: base()
-		{
-			Client.DefaultRequestHeaders.Authorization =
-				new AuthenticationHeaderValue("Bearer", token);
+			if (token != null)
+				Client.DefaultRequestHeaders.Authorization =
+					new AuthenticationHeaderValue("Bearer", token);
 		}
 	}
 }

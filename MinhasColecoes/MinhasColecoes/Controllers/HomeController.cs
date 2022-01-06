@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MinhasColecoes.Helper;
 using MinhasColecoes.Models;
@@ -23,12 +24,18 @@ namespace MinhasColecoes.Controllers
 
 		public IActionResult Index()
 		{
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			if (ViewBag.Usuario != null)
+				return Redirect("../Usuario/Index");
 			return View();
 		}
 
 		[HttpGet]
 		public IActionResult Login()
 		{
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			if (ViewBag.Usuario != null)
+				return Redirect("../Usuario/Index");
 			return View();
 		}
 
@@ -44,22 +51,21 @@ namespace MinhasColecoes.Controllers
 			{
 				UsuarioLoginViewModel usuarioLogado = await response.Content.ReadAsAsync<UsuarioLoginViewModel>();
 
-				TempData["usrId"] = usuarioLogado.Id;
-				TempData["usrNome"] = usuarioLogado.Nome;
-				TempData["usrToken"] = usuarioLogado.Token;
+				HttpContext.Session.SetString("usrId", usuarioLogado.Id.ToString());
+				HttpContext.Session.SetString("usrNome", usuarioLogado.Nome);
+				HttpContext.Session.SetString("usrToken", usuarioLogado.Token);
+				ViewBag.Usuario = usuarioLogado.Nome;
 
-				return View("../Usuario/Index");
+				return Redirect("../Usuario/Index");
 			}
 			else
 			{
-				return View("../Home");
+				return View("Error");
 			}
 		}
 		public IActionResult Logout()
 		{
-			TempData["usrId"] = null;
-			TempData["usrNome"] = null;
-			TempData["usrToken"] = null;
+			HttpContext.Session.Clear();
 			return View("Index");
 		}
 
