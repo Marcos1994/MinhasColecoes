@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MinhasColecoes.Helper;
-using MinhasColecoes.Models.API;
+using MinhasColecoes.MinhasColecoesAPI.InputModels;
+using MinhasColecoes.MinhasColecoesAPI.Services;
+using MinhasColecoes.MinhasColecoesAPI.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

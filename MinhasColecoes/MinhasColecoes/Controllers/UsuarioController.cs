@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MinhasColecoes.Helper;
+using MinhasColecoes.MinhasColecoesAPI.Services;
+using MinhasColecoes.MinhasColecoesAPI.ViewModels;
 using MinhasColecoes.Models;
-using MinhasColecoes.Models.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;

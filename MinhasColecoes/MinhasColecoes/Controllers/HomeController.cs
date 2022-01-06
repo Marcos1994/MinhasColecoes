@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MinhasColecoes.Helper;
+using MinhasColecoes.MinhasColecoesAPI.InputModels;
+using MinhasColecoes.MinhasColecoesAPI.Services;
+using MinhasColecoes.MinhasColecoesAPI.ViewModels;
 using MinhasColecoes.Models;
-using MinhasColecoes.Models.API;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

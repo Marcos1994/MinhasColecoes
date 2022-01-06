@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MinhasColecoes.Models.API.Enums
+namespace MinhasColecoes.MinhasColecoesAPI.Enums
 {
 	public enum EnumRelacaoUsuarioItem
 	{

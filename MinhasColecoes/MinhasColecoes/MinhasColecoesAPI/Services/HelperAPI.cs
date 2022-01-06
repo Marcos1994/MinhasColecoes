@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace MinhasColecoes.Helper
+namespace MinhasColecoes.MinhasColecoesAPI.Services
 {
 	public class HelperAPI
 	{
