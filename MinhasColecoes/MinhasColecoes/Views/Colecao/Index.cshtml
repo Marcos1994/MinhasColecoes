@@ -9,8 +9,11 @@
 		<div class="d-flex">
 			<form method="GET" class="input-group mb-3">
 				<button class="btn btn-primary" type="submit" id="button-busca">Buscar</button>
-				<input type="text" class="form-control form-control-sm" placeholder="Nome da coleção" aria-label="Nome da coleção" aria-describedby="button-busca" name="nome">
-				<button class="btn btn-outline-secondary btn-sm" type="submit" asp-area="" asp-controller="Colecao" asp-action="Cadastrar">Cadastrar</button>
+				<input type="text" class="form-control form-control-sm" placeholder="Nome da coleção" aria-label="Nome da coleção" aria-describedby="button-busca" name="nome" value="@(ViewBag.NomeColecaoBusca)">
+				@if (ViewBag.Usuario != null)
+				{
+					<button class="btn btn-outline-secondary btn-sm" type="submit" asp-area="" asp-controller="Colecao" asp-action="Cadastro">Cadastrar</button>
+				}
 			</form>
 		</div>
 	</div>

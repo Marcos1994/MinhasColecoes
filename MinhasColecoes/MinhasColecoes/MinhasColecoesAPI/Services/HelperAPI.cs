@@ -9,7 +9,8 @@ namespace MinhasColecoes.MinhasColecoesAPI.Services
 {
 	public class HelperAPI
 	{
-		private readonly string url = "https://localhost:44308";
+		private readonly string url = "https://localhost:5001";
+		//private readonly string url = "https://localhost:44308";
 		public HttpClient Client { get; private set; }
 
 		public HelperAPI(string? token = null)

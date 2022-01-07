@@ -18,6 +18,7 @@ namespace MinhasColecoes.Controllers
 		public async Task<IActionResult> Index(string nome = "")
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			ViewBag.NomeColecaoBusca = nome;
 			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			IEnumerable<ColecaoBasicViewModel> colecoes = null;
 
@@ -57,18 +58,27 @@ namespace MinhasColecoes.Controllers
 				return View("Error");
 		}
 
-		public async Task<IActionResult> Cadastrar(string nome)
+		public async Task<IActionResult> Cadastro(ColecaoInputModel input)
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
-			return View(new ColecaoInputModel() { Nome = nome });
+			return View(input);
 		}
 
 		[HttpPost]
 		public async Task<IActionResult> Cadastrar(ColecaoInputModel input)
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
-			input.Nome = "AEEEEE";
-			return View(input);
+			ViewBag.IdUsuario = HttpContext.Session.GetString("usrId");
+			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
+			HttpResponseMessage response = await client.PostAsJsonAsync($"Colecoes", input);
+
+			if (response.IsSuccessStatusCode)
+			{
+				ColecaoViewModel colecao = await response.Content.ReadAsAsync<ColecaoViewModel>();
+				return Redirect($"Visualizar/{colecao.Id}");
+			}
+			else
+				return View("Error");
 		}
 	}
 }

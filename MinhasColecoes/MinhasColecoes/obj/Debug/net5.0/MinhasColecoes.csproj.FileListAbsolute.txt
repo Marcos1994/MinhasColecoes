@@ -403,6 +403,6 @@ F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\Micros
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\MinhasColecoes.MvcApplicationPartsAssemblyInfo.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\MinhasColecoes.csproj.AssemblyReference.cache
-F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Cadastrar.cshtml.g.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Visualizar.cshtml.g.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Usuario\Login.cshtml.g.cs
+F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Cadastro.cshtml.g.cs
