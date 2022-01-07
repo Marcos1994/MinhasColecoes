@@ -11,12 +11,12 @@
 		<div class="row">
 			<div class="col-8">
 				<div class="d-flex">
-					<a class="btn btn-secondary">Editar perfil</a>
+					<a class="btn btn-primary">Editar perfil</a>
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="d-flex flex-row-reverse justify-content-start">
-					<a class="btn btn-danger" asp-area="" asp-controller="Usuario" asp-action="Logout">Sair</a>
+					<a class="btn btn-danger text-white" asp-area="" asp-controller="Usuario" asp-action="Logout">Sair</a>
 				</div>
 			</div>
 		</div>
@@ -28,10 +28,10 @@
 				<div class="col">
 					<div class="card h-100">
 						@if (!c.Publica)
-						{ <i class="bi-eye-slash-fill position-absolute end-0 p-2 text-secondary"  title="Coleção particular"
+						{ <i class="bi-eye-slash-fill position-absolute end-0 p-2 text-primary"  title="Coleção particular"
 							   style="font-size: 20px; line-height: 20px;"></i> }
 						else if (Model.ColecoesDono.Any(d => d.Id == c.Id))
-						{ <i class="bi-flag-fill position-absolute end-0 p-2 text-secondary"  title="Dono desta coleção"
+						{ <i class="bi-flag-fill position-absolute end-0 p-2 text-primary"  title="Dono desta coleção"
 							   style="font-size: 20px; line-height: 20px;"></i> }
 						<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)">
 							<img src="~/img/colecao/foto-padrao.png" class="card-img-top" alt="...">

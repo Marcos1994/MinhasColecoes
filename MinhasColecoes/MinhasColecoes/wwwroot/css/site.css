@@ -90,7 +90,7 @@ body {
     font-size: 3em;
     line-height: 48px;
     padding-bottom: 20px;
-    background: linear-gradient(to right, #CD1818 40%, #0F2C67 60%);
+    background: linear-gradient(to right, #264D9B 40%, #E5242E 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

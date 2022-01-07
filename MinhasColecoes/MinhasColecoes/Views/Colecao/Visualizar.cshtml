@@ -41,7 +41,7 @@
 					<div class="card h-100">
 						@if (!c.Publica)
 						{
-							<i class="bi-eye-slash-fill position-absolute end-0 p-2 text-secondary" title="Coleção particular"
+							<i class="bi-eye-slash-fill position-absolute end-0 p-2 text-primary" title="Coleção particular"
 							   style="font-size: 20px; line-height: 20px;"></i>
 						}
 						<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)">
@@ -73,7 +73,7 @@
 			{
 				<div class="col">
 					<div class="card h-100">
-						<a href="#" class="position-absolute end-0 p-2 text-secondary">
+						<a href="#" class="position-absolute end-0 p-2 text-primary">
 							@switch (i.Relacao)
 							{
 								case EnumRelacaoUsuarioItem.NaoPossuo:
