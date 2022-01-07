@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/N5++sENRXR+YjYsUAHOV5z56Q0dlGyheYgdXODtL9Mma2s3isKTHZTFms6gv7UpfcJcCSS3SA6YY8AglqraTQ==",
+  "dgSpecHash": "9OQce/o+4hculbvzqU5dfgv3aw3AwsriB9DZdL63vM1eVnVufyoFQfdvmD4AFKK0C+UAQjCWqiQ9MwZipVeC0w==",
   "success": true,
   "projectFilePath": "F:\\Projetos\\MinhasColecoes\\MinhasColecoes\\MinhasColecoes\\MinhasColecoes.csproj",
   "expectedPackageFiles": [
@@ -68,6 +68,7 @@
     "C:\\Users\\Andre\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Andre\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Andre\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\Andre\\.nuget\\packages\\sixlabors.imagesharp\\1.0.4\\sixlabors.imagesharp.1.0.4.nupkg.sha512",
     "C:\\Users\\Andre\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Andre\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Andre\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

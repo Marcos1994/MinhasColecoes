@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MinhasColecoes.MinhasColecoesAPI.InputModels;
 using MinhasColecoes.MinhasColecoesAPI.Services;
 using MinhasColecoes.MinhasColecoesAPI.ViewModels;
+using MinhasColecoes.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,13 @@ namespace MinhasColecoes.Controllers
 {
 	public class ColecaoController : Controller
 	{
+		private readonly IWebHostEnvironment _webHostEnv;
+
+		public ColecaoController(IWebHostEnvironment webHostEnv)
+		{
+			_webHostEnv = webHostEnv;
+		}
+
 		[HttpGet]
 		public async Task<IActionResult> Index(string nome = "")
 		{
@@ -67,6 +76,10 @@ namespace MinhasColecoes.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Cadastrar(ColecaoInputModel input)
 		{
+			await AppUtil.ProcessarImagem(EnumCategoriaObjeto.Colecao, input, _webHostEnv);
+
+
+
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
 			ViewBag.IdUsuario = HttpContext.Session.GetString("usrId");
 			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
@@ -78,7 +91,9 @@ namespace MinhasColecoes.Controllers
 				return Redirect($"Visualizar/{colecao.Id}");
 			}
 			else
-				return View("Error");
+			{
+				return RedirectToAction($"Cadastro", input);
+			}
 		}
 	}
 }
