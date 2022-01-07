@@ -13,7 +13,7 @@ namespace MinhasColecoes.MinhasColecoesAPI.InputModels
 		public string Descricao { get; set; }
 		public bool Publica { get; set; }
 		public string Foto { get; set; }
-		public IFormFile FotoImg { get; set; }
+		public IFormFile? FotoImg { get; set; }
 
 		public IFormFile GetArquivo()
 		{

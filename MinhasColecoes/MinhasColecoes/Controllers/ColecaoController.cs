@@ -76,9 +76,8 @@ namespace MinhasColecoes.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Cadastrar(ColecaoInputModel input)
 		{
+			//Salva a foto
 			await AppUtil.ProcessarImagem(EnumCategoriaObjeto.Colecao, input, _webHostEnv);
-
-
 
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
 			ViewBag.IdUsuario = HttpContext.Session.GetString("usrId");

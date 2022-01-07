@@ -15,6 +15,13 @@ namespace MinhasColecoes.Util
 	{
 		public static async Task ProcessarImagem(EnumCategoriaObjeto categoria, IFotoModel obj, IWebHostEnvironment webHostEnv)
 		{
+			//Verifica se o arquivo não é nulo
+			if(obj.GetArquivo() == null)
+			{
+				obj.SetNomeFoto("_foto_padrao");
+				return;
+			}
+
 			//Copia a imagem para a memoria
 			MemoryStream ms = new MemoryStream();
 			await obj.GetArquivo().CopyToAsync(ms);
