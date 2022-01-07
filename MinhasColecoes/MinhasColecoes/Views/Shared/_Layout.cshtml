@@ -10,47 +10,49 @@
 	<link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
-			<div class="container">
-				<a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">Minhas Coleções</a>
-				<ul class="navbar-nav flex-grow-1">
-					<li class="nav-item">
-						<a class="nav-link text-white" asp-area="" asp-controller="Colecao" asp-action="Index">Coleções</a>
-					</li>
-				</ul>
-				<div class="align-self-end">
-					<ul class="navbar-nav">
+	<div class="d-flex flex-column wrapper">
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+				<div class="container">
+					<a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">Minhas Coleções</a>
+					<ul class="navbar-nav flex-grow-1">
 						<li class="nav-item">
-							@if (ViewBag.Usuario == null)
-							{ <a class="nav-link text-white" asp-area="" asp-controller="Usuario" asp-action="Login">Conectar-se</a> }
-							else
-							{
-								<a class="nav-link text-white" asp-area="" asp-controller="Usuario" asp-action="Index">
-									@ViewBag.Usuario
-									<i class="bi-person-circle" style="font-size: 20px; line-height: 20px;"></i>
-								</a>
-							}
+							<a class="nav-link text-white" asp-area="" asp-controller="Colecao" asp-action="Index">Coleções</a>
 						</li>
 					</ul>
+					<div class="align-self-end">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								@if (ViewBag.Usuario == null)
+								{<a class="nav-link text-white" asp-area="" asp-controller="Usuario" asp-action="Login">Conectar-se</a> }
+								else
+								{
+									<a class="nav-link text-white" asp-area="" asp-controller="Usuario" asp-action="Index">
+										@ViewBag.Usuario
+										<i class="bi-person-circle" style="font-size: 20px; line-height: 20px;"></i>
+									</a>
+								}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div class="container flex-fill">
+			<main role="main" class="pb-3">
+				@RenderBody()
+			</main>
+		</div>
+
+		<footer class="border-top text-muted">
+			<div class="container">
+				<div class="row py-3">
+					&copy; 2022 - MinhasColecoes
 				</div>
 			</div>
-		</nav>
-	</header>
-	<div class="container">
-		<main role="main" class="pb-3">
-			@RenderBody()
-		</main>
+		</footer>
 	</div>
-
-	<footer class="border-top footer text-muted">
-		<div class="container">
-			<div class="text-black">
-				&copy; 2022 - MinhasColecoes - <a class="text-black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-			</div>
-		</div>
-	</footer>
-
 
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
