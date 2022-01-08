@@ -67,10 +67,29 @@ namespace MinhasColecoes.Controllers
 				return View("Error");
 		}
 
-		public async Task<IActionResult> Cadastro(ColecaoInputModel input)
+		public IActionResult Cadastro(ColecaoInputModel input)
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
 			return View(input);
+		}
+
+		public async Task<IActionResult> CadastroSubcolecao(int id)
+		{
+			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+
+			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
+			HttpResponseMessage response = await client.GetAsync($"Colecoes/{id}");
+
+			if (response.IsSuccessStatusCode)
+			{
+				ColecaoInputModel input = new ColecaoInputModel();
+				ColecaoBasicViewModel supercolecao = await response.Content.ReadAsAsync<ColecaoBasicViewModel>();
+				input.IdColecaoMaior = supercolecao.Id;
+				ViewBag.NomeSupercolecao = supercolecao.Nome;
+				return View("Cadastro", input);
+			}
+			else
+				return View("Error");
 		}
 
 		[HttpPost]

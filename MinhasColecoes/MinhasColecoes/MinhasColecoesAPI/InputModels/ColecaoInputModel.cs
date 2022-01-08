@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MinhasColecoes.MinhasColecoesAPI.ViewModels;
 using MinhasColecoes.Util;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace MinhasColecoes.MinhasColecoesAPI.InputModels
 		public bool Publica { get; set; }
 		public string Foto { get; set; }
 		public IFormFile? FotoImg { get; set; }
+		public int? IdColecaoMaior { get; set; }
 
 		public IFormFile GetArquivo()
 		{
