@@ -58,13 +58,16 @@ namespace MinhasColecoes.Controllers
 			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			HttpResponseMessage response = await client.GetAsync($"Colecoes/{id}");
 
-			if (response.IsSuccessStatusCode)
-			{
-				ColecaoViewModel colecao = await response.Content.ReadAsAsync<ColecaoViewModel>();
-				return View(colecao);
-			}
-			else
+			if (!response.IsSuccessStatusCode)
 				return View("Error");
+
+			ColecaoViewModel colecao = await response.Content.ReadAsAsync<ColecaoViewModel>();
+			if(colecao.IdColecaoMaior != null)
+			{
+				response = await client.GetAsync($"Colecoes/{colecao.IdColecaoMaior}/Genealogia");
+				colecao.ColecaoMaior = await response.Content.ReadAsAsync<ColecaoGenealogiaViewModel>();
+			}
+			return View(colecao);
 		}
 
 		public IActionResult Cadastro(ColecaoInputModel input)

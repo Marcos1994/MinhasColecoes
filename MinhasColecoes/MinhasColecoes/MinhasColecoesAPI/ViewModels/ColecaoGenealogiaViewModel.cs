@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace MinhasColecoes.MinhasColecoesAPI.ViewModels
 {
-	public class ColecaoBasicViewModel
+	public class ColecaoGenealogiaViewModel
 	{
 		public int Id { get; set; }
 		public string Nome { get; set; }
-		public string Descricao { get; set; }
-		public string Foto { get; set; }
-		public bool Publica { get; set; }
 		public int IdDono { get; set; }
-		public int? IdColecaoMaior { get; set; }
+		public bool Publica { get; set; }
+		public ColecaoGenealogiaViewModel ColecaoPai { get; set; }
 	}
 }

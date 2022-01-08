@@ -41,13 +41,27 @@ namespace MinhasColecoes.Util
 			ms.Close();
 			ms.Dispose();
 
+			int tamanhoMaximo;
+			switch (categoria)
+			{
+				case EnumCategoriaObjeto.Perfil:
+					tamanhoMaximo = 600;
+					break;
+				case EnumCategoriaObjeto.Colecao:
+					tamanhoMaximo = 400;
+					break;
+				default:
+					tamanhoMaximo = 900;
+					break;
+			}
+
 			//Redimensiono a imagem
-			if(img.Size().Width > 900 || img.Size().Height > 900)
+			if(img.Size().Width > tamanhoMaximo || img.Size().Height > tamanhoMaximo)
 			{
 				ResizeOptions resize = new ResizeOptions()
 				{
 					Mode = ResizeMode.Max,
-					Size = new Size(900, 900)
+					Size = new Size(tamanhoMaximo, tamanhoMaximo)
 				};
 
 				img.Mutate(i => i.Resize(resize));

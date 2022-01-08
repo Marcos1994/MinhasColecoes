@@ -7,16 +7,40 @@
 }
 
 <div class="row">
-	<div class="col-10 col-sm-11">
+	@if (Model.IdColecaoMaior != null)
+	{
 		<div class="d-flex">
-			<div class="row">
-				<h1 class="text-primary">Coleção de @Html.DisplayFor(model => model.Nome)</h1>
-				<p>@Html.DisplayFor(model => model.Descricao)</p>
+			<div class="d-flex flex-row-reverse">
+				@{ var c = Model.ColecaoMaior;
+					do
+					{
+						<div class="pe-2">
+							@if (c.Publica || c.IdDono.ToString() == ViewBag.Usuario)
+							{<a class="btn btn-primary btn-sm" asp-controller="Colecao"
+								asp-action="Visualizar" asp-route-id="@(c.Id)">@c.Nome</a>}
+							else
+							{<a class="btn btn-danger text-white btn-sm">@c.Nome</a>}
+						</div>
+						c = c.ColecaoPai;
+					} while (c != null);
+				}
+				<div class="pe-2"><h4>Subcoleção de</h4></div>
 			</div>
 		</div>
+	}
+	<div class="col-10 col-sm-11">
+		<div class="row col-12">
+			<h1 class="text-primary">Coleção de @Html.DisplayFor(model => model.Nome)</h1>
+		</div>
+		@if (Model.Descricao != null && Model.Descricao.Length > 0)
+		{
+			<div class="row col-12">
+				<p>@Html.DisplayFor(model => model.Descricao) asd</p>
+			</div>
+		}
 	</div>
 	<div class="col-2 col-sm-1">
-		@if (Model.Dono.Id.ToString() == ViewBag.IdUsuario)
+		@if (Model.IdDono.ToString() == ViewBag.IdUsuario)
 		{
 			<div class="d-flex flex-row-reverse justify-content-center justify-content-sm-start">
 				<input class="btn btn-sm btn-secondary" type="button" value="Editar" />
@@ -45,7 +69,6 @@
 		}
 	</div>
 </p>
-
 @if (Model.Colecoes.Count > 0)
 {
 	<div class="collapse" id="collapseSubcolecoes">
