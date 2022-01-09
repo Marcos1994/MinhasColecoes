@@ -76,17 +76,28 @@
 			@foreach (ColecaoBasicViewModel c in Model.Colecoes)
 			{
 				<div class="col">
-					<div class="card h-100">
-						@if (!c.Publica)
-						{
-							<i class="bi-eye-slash-fill position-absolute end-0 p-2 text-primary" title="Coleção particular"
-							   style="font-size: 20px; line-height: 20px;"></i>
-						}
-						<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)"
-						   class="card-img-top bg-secondary" style="height: 150px;">
-							<img src="~/img/fotos/Colecao/@(c.Foto).jpg" alt="..."
-								 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
-						</a>
+					<div class="card h-100 shadow rounded-3">
+						<div class="card-img-top bg-secondary position-relative" style="height: 150px;">
+							@if (!c.Publica)
+							{
+								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+									<i class="bi-eye-slash-fill" title="Coleção particular"
+									   style="font-size: 20px; line-height: 20px;"></i>
+								</a>
+							}
+							else if (c.IdDono.ToString() == ViewBag.IdUsuario)
+							{
+								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+									<i class="bi-flag-fill" title="Dono da coleção"
+									   style="font-size: 20px; line-height: 20px;"></i>
+								</a>
+							}
+							<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)"
+							   class="card-img-top bg-secondary" style="height: 150px;">
+								<img src="~/img/fotos/Colecao/@(c.Foto).jpg" alt="..."
+									 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
+							</a>
+						</div>
 						<div class="card-body">
 							<h6 class="card-title truncate-2l text-center">@(c.Nome)</h6>
 							<p class="card-text truncate-2l">@(c.Descricao)</p>
@@ -124,41 +135,42 @@
 		@foreach (ItemBasicViewModel i in Model.Itens)
 		{
 			<div class="col">
-				<div class="card h-100">
-					<a href="#" class="position-absolute end-0 p-2 text-primary">
-						@switch (i.Relacao)
-						{
-							case EnumRelacaoUsuarioItem.NaoPossuo:
-								<i class="bi-circle" title="Não Possuo"
-								   style="font-size: 20px; line-height: 20px;"></i>
-								break;
-							case EnumRelacaoUsuarioItem.Desejo:
-								<i class="bi-heart" title="Desejo"
-								   style="font-size: 20px; line-height: 20px;"></i>
-								break;
-							case EnumRelacaoUsuarioItem.AguardandoRecebimento:
-								<i class="bi-heart-half" title="Aguardando Receber"
-								   style="font-size: 20px; line-height: 20px;"></i>
-								break;
-							case EnumRelacaoUsuarioItem.Possuo:
-								<i class="bi-heart-fill" title="Possuo"
-								   style="font-size: 20px; line-height: 20px;"></i>
-								break;
-							case EnumRelacaoUsuarioItem.Trocar:
-								<i class="bi-arrow-left-right" title="Tenho Para Trocar"
-								   style="font-size: 20px; line-height: 20px;"></i>
-								break;
-							case EnumRelacaoUsuarioItem.Vender:
-								<i class="bi-currency-dollar" title="Tenho Para Vender"
-								   style="font-size: 20px; line-height: 20px;"></i>
-								break;
-						}
-					</a>
-					<a asp-area="" asp-controller="Item" asp-action="Visualizar" asp-route-id="@(i.Id)"
-					   class="card-img-top bg-secondary" style="height: 120px;">
-						<img src="~/img/fotos/Item/@(i.Foto).jpg" alt="..."
-							 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
-					</a>
+				<div class="card h-100 shadow rounded-3">
+					<div class="card-img-top bg-secondary position-relative" style="height: 120px;">
+						<a href="#" class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+							@switch (i.Relacao)
+							{
+								case EnumRelacaoUsuarioItem.NaoPossuo:
+									<i class="bi-circle" title="Não Possuo"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Desejo:
+									<i class="bi-heart" title="Desejo"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.AguardandoRecebimento:
+									<i class="bi-heart-half" title="Aguardando Receber"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Possuo:
+									<i class="bi-heart-fill" title="Possuo"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Trocar:
+									<i class="bi-arrow-left-right" title="Tenho Para Trocar"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+								case EnumRelacaoUsuarioItem.Vender:
+									<i class="bi-currency-dollar" title="Tenho Para Vender"
+									   style="font-size: 20px; line-height: 20px;"></i>
+									break;
+							}
+						</a>
+						<a asp-area="" asp-controller="Item" asp-action="Visualizar" asp-route-id="@(i.Id)">
+							<img src="~/img/fotos/Item/@(i.Foto).jpg" alt="..."
+								 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
+						</a>
+					</div>
 					<div class="card-body">
 						<h6 class="card-text truncate-2l text-center">@(i.Nome)</h6>
 					</div>

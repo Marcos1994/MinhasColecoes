@@ -21,12 +21,14 @@ namespace MinhasColecoes.Controllers
 		public ColecaoController(IWebHostEnvironment webHostEnv)
 		{
 			_webHostEnv = webHostEnv;
+			
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> Index(string nome = "")
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			ViewBag.IdUsuario = HttpContext.Session.GetString("usrId");
 			ViewBag.NomeColecaoBusca = nome;
 			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			IEnumerable<ColecaoBasicViewModel> colecoes = null;

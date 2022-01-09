@@ -78,7 +78,7 @@ namespace MinhasColecoes.Controllers
 			//Gero os itens InputModel
 			foreach(IFormFile f in inputs.FotosImg)
 			{
-				if(inputs.GetNome(f).Length > 3)
+				if(inputs.GetNome(f).Length >= 3)
 					itens.Add(new ItemInputModel() {
 						Codigo = inputs.GetCodigo(f),
 						Comentario = "",

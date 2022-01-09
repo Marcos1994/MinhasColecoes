@@ -17,6 +17,7 @@ namespace MinhasColecoes.Controllers
 		public async Task<IActionResult> Index()
 		{
 			ViewBag.Usuario = HttpContext.Session.GetString("usrNome");
+			ViewBag.IdUsuario = HttpContext.Session.GetString("usrId");
 			HttpClient client = new HelperAPI(HttpContext.Session.GetString("usrToken")).Client;
 			HttpResponseMessage response = await client.GetAsync("Usuario");
 

@@ -26,18 +26,28 @@
 			@foreach (ColecaoBasicViewModel c in Model.ColecoesMembro)
 			{
 				<div class="col">
-					<div class="card h-100">
-						@if (!c.Publica)
-						{<i class="bi-eye-slash-fill position-absolute end-0 p-2 text-primary" title="Coleção particular"
-							style="font-size: 20px; line-height: 20px;"></i> }
-						else if (Model.ColecoesDono.Any(d => d.Id == c.Id))
-						{ <i class="bi-flag-fill position-absolute end-0 p-2 text-primary" title="Dono desta coleção"
-							style="font-size: 20px; line-height: 20px;"></i>}
-						<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)"
-						   class="card-img-top bg-secondary" style="height: 150px;">
-							<img src="~/img/fotos/Colecao/@(c.Foto).jpg" alt="..."
-								 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
-						</a>
+					<div class="card h-100 shadow rounded-3">
+						<div class="card-img-top bg-secondary position-relative" style="height: 150px;">
+							@if (!c.Publica)
+							{
+								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+									<i class="bi-eye-slash-fill" title="Coleção particular"
+									   style="font-size: 20px; line-height: 20px;"></i>
+								</a>
+							}
+							else if (c.IdDono.ToString() == ViewBag.IdUsuario)
+							{
+								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+									<i class="bi-flag-fill" title="Dono da coleção"
+									   style="font-size: 20px; line-height: 20px;"></i>
+								</a>
+							}
+							<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)"
+							   class="card-img-top bg-secondary" style="height: 150px;">
+								<img src="~/img/fotos/Colecao/@(c.Foto).jpg" alt="..."
+									 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
+							</a>
+						</div>
 						<div class="card-body">
 							<h6 class="card-title truncate-2l text-center">@(c.Nome)</h6>
 							<p class="card-text truncate-2l">@(c.Descricao)</p>
