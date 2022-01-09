@@ -110,7 +110,8 @@
 		@if (ViewBag.Usuario != null)
 		{
 			<div class="col-4 col-md-2 col-xxl-1">
-				<a class="btn btn-sm btn-secondary w-100 text-white">
+				<a asp-area="" asp-controller="Item" asp-action="CadastroMultiplo" asp-route-id="@(Model.Id)"
+				   class="btn btn-sm btn-secondary w-100 text-white" type="submit">
 					Adicionar @*Item*@
 				</a>
 			</div>

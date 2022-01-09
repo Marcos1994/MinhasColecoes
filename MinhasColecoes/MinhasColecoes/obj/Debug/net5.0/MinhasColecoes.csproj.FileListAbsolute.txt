@@ -407,3 +407,4 @@ F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Usuario\Login.cshtml.g.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Colecao\Cadastro.cshtml.g.cs
 F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\bin\Debug\net5.0\SixLabors.ImageSharp.dll
+F:\Projetos\MinhasColecoes\MinhasColecoes\MinhasColecoes\obj\Debug\net5.0\Razor\Views\Item\CadastroMultiplo.cshtml.g.cs

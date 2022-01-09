@@ -1,0 +1,50 @@
+﻿@{
+	ViewData["Title"] = "Cadastrar";
+	@using MinhasColecoes.Models;
+	@using MinhasColecoes.Util;
+}
+@model MultiplosItensInputModel
+
+<h1 class="text-primary">Cadastrar Coleção</h1>
+<hr />
+<div class="row">
+	<div class="col-sm-6 col-lg-4">
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<form asp-action="CadastrarMultiplos" enctype="multipart/form-data">
+			<div class="row mb-3">
+				<h3 class="text-primary">Cadastrar itens em @ViewBag.NomeGenealogia</h3>
+				<input asp-for="IdColecao" class="visually-hidden" />
+			</div>
+
+			<div class="form-group form-check mb-3">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="ComCodigo" /> Codigo no nome dos arquivos
+				</label>
+			</div>
+
+			<div class="form-group form-check mb-3">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="ComRelacao" /> Relacionamento no nome dos arquivos
+				</label>
+			</div>
+
+			<div class="form-floating mb-3">
+				<input multiple asp-for="FotosImg" class="btn btn-secondary w-100" accept="image/*" />
+			</div>
+
+			<div class="row">
+				<div class="col-9">
+					<div class="d-flex">
+						<button type="submit" class="btn btn-primary w-100">Salvar Coleção</button>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="d-flex flex-row-reverse justify-content-start">
+						<a asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(Model.IdColecao)"
+							class="btn btn-danger text-white w-100">Voltar</a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
