@@ -12,6 +12,7 @@ namespace MinhasColecoes.MinhasColecoesAPI.Enums
 		AguardandoRecebimento = 2,
 		Possuo = 3,
 		Vender = 4,
-		Trocar = 5
+		Trocar = 5,
+		JaPossui = 6
 	}
 }

@@ -24,6 +24,9 @@ namespace MinhasColecoes.Controllers
 			if (response.IsSuccessStatusCode)
 			{
 				UsuarioViewModel usuario = await response.Content.ReadAsAsync<UsuarioViewModel>();
+				usuario.QuantidadeParticular = usuario.ColecoesMembro.Where(c => !c.Publica).Count();
+				usuario.QuantidadeDono = usuario.ColecoesMembro.Where(c => c.IdDono == usuario.Id).Count() - usuario.QuantidadeParticular;
+				usuario.QuantidadeMembro = usuario.ColecoesMembro.Where(c => c.IdDono != usuario.Id).Count();
 				return View(usuario);
 			}
 			else

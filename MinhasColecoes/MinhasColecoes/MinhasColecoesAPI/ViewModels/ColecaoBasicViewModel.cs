@@ -14,5 +14,8 @@ namespace MinhasColecoes.MinhasColecoesAPI.ViewModels
 		public bool Publica { get; set; }
 		public int IdDono { get; set; }
 		public int? IdColecaoMaior { get; set; }
+		public int QuantidadeMembros { get; set; }
+		public int QuantidadeSubcolecoes { get; set; }
+		public bool UsuarioParticipa { get; set; }
 	}
 }

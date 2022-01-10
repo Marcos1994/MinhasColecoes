@@ -55,7 +55,7 @@
 	{
 		<div class="col">
 			<div class="card h-100 shadow rounded-3">
-				<div class="card-img-top bg-secondary position-relative" style="height: 150px;">
+				<div class="card-img-top position-relative" style="height: 150px;">
 					@if (!c.Publica)
 					{
 						<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
@@ -70,11 +70,32 @@
 							   style="font-size: 20px; line-height: 20px;"></i>
 						</a>
 					}
+					else if (c.UsuarioParticipa)
+					{
+						<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+							<i class="bi-person-circle" title="Membro da coleção"
+							   style="font-size: 20px; line-height: 20px;"></i>
+						</a>
+					}
 					<a asp-area="" asp-controller="Colecao" asp-action="Visualizar" asp-route-id="@(c.Id)"
 					   class="card-img-top bg-secondary" style="height: 150px;">
 						<img src="~/img/fotos/Colecao/@(c.Foto).jpg" alt="..."
 							 class="mx-auto d-block" style="max-width: 100%; max-height: 100%;">
 					</a>
+				</div>
+				<div class="card-header">
+					<div class="row">
+						<div class="col-6">
+							<i class="bi-diagram-3-fill" title="Quantidade de subcoleções"
+							   style="font-size: 20px; line-height: 20px;"></i>
+							@(c.QuantidadeSubcolecoes)
+						</div>
+						<div class="col-6">
+							<i class="bi-people-fill" title="Quantidade de Membros"
+							   style="font-size: 20px; line-height: 20px;"></i>
+							@(c.QuantidadeMembros)
+						</div>
+					</div>
 				</div>
 				<div class="card-body">
 					<h6 class="card-title truncate-2l text-center">@(c.Nome)</h6>

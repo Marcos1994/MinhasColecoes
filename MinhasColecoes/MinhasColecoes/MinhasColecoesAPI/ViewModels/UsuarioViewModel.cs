@@ -9,7 +9,9 @@ namespace MinhasColecoes.MinhasColecoesAPI.ViewModels
 	{
 		public string Descricao { get; set; }
 		public string Foto { get; set; }
-		public List<ColecaoBasicViewModel> ColecoesDono { get; set; } = new List<ColecaoBasicViewModel>();
 		public List<ColecaoBasicViewModel> ColecoesMembro { get; set; } = new List<ColecaoBasicViewModel>();
+		public int QuantidadeMembro { get; set; }
+		public int QuantidadeDono { get; set; }
+		public int QuantidadeParticular { get; set; }
 	}
 }
