@@ -64,21 +64,21 @@
 						<div class="card-img-top position-relative" style="height: 150px;">
 							@if (!c.Publica)
 							{
-								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+								<a class="position-absolute end-0 bottom-0 p-2 text-secondary bg-white rounded-top">
 									<i class="bi-eye-slash-fill" title="Coleção particular"
 									   style="font-size: 20px; line-height: 20px;"></i>
 								</a>
 							}
 							else if (c.IdDono.ToString() == ViewBag.IdUsuario)
 							{
-								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+								<a class="position-absolute end-0 bottom-0 p-2 text-secondary bg-white rounded-top">
 									<i class="bi-flag-fill" title="Dono da coleção"
 									   style="font-size: 20px; line-height: 20px;"></i>
 								</a>
 							}
 							else if (c.UsuarioParticipa)
 							{
-								<a class="position-absolute end-0 bottom-0 p-2 text-primary bg-white rounded-top">
+								<a class="position-absolute end-0 bottom-0 p-2 text-secondary bg-white rounded-top">
 									<i class="bi-person-circle" title="Membro da coleção"
 									   style="font-size: 20px; line-height: 20px;"></i>
 								</a>

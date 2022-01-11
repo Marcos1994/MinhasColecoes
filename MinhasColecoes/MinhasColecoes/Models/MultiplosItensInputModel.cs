@@ -65,6 +65,8 @@ namespace MinhasColecoes.Models
 					return EnumRelacaoUsuarioItem.Trocar;
 				case "V":
 					return EnumRelacaoUsuarioItem.Vender;
+				case "J":
+					return EnumRelacaoUsuarioItem.JaPossui;
 				default:
 					return EnumRelacaoUsuarioItem.NaoPossuo;
 			}
