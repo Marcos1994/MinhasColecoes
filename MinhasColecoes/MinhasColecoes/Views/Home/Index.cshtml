@@ -1,7 +1,6 @@
 ﻿@{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
-@model MultiplosItensInputModel
 
 <div id="carouselMain" class="carousel slide" data-bs-ride="carousel">
 	<div class="carousel-indicators">
@@ -43,21 +42,7 @@
 </div>
 
 <div class="text-center">
-	<h1 class="display-4">Welcome</h1>
-	<div>
-		<form asp-controller="HomeController1" asp-action="CadastrarMultiplos" enctype="multipart/form-data">
-			<div class="form-floating mb-3">
-				<input multiple asp-for="FotosImg" class="btn btn-secondary w-100" accept="image/*" />
-			</div>
-
-			<div class="row">
-				<div class="col-9">
-					<div class="d-flex">
-						<button type="submit" class="btn btn-primary w-100">Salvar Coleção</button>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome</h1>
+    <h1 class="teste">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
